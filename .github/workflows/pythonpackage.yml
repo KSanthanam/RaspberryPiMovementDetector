@@ -35,9 +35,11 @@ jobs:
     - name: Run Distribution
       run: |
         rm -rf dist
-        pip install setuptools wheel
+        pip install setuptools
+        pip wheel -w dist .
         python setup.py sdist
         python setup.py bdist_wheel
+        python setup.py sdist
     - name: Publish a Python distribution to PyPI
       # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@master
