@@ -22,7 +22,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
   ],
-  license=license,
+  license='MIT',
   keywords=['RaspberryPi', 'RaspberryPi IoT']
 )
   # long_description_content_type="text/markdown",
