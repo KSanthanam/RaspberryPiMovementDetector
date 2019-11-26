@@ -1,10 +1,13 @@
+import pytest
 from MovementDetector.Watch import Watch
 
 class TestWatch():
-    def test_trig(self):
-        watch = Watch(23,24)
-        assert watch.trigger_pin() == 23
+    @pytest.mark.parametrize('trig, echo', [(23,24)])
+    def test_trig(self, trig, echo):
+        watch = Watch(trig,echo)
+        assert watch.trigger_pin() == trig
         
-    def test_echo(self):
-        watch = Watch(23,24)
-        assert watch.echo_pin() == 24
+    @pytest.mark.parametrize('trig, echo', [(23,24)])
+    def test_echo(self, trig, echo):
+        watch = Watch(trig,echo)
+        assert watch.echo_pin() == echo
