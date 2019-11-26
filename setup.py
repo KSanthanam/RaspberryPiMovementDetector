@@ -10,7 +10,6 @@ setuptools.setup(
   name='RaaspberryPiMovementDetector',
   packages=['RaaspberryPiMovementDetector'],
   version='0.3',
-  license='MIT',
   description='Raspberry Movement Detector',
   long_description=long_description,
   long_description_content_type="text/markdown",
