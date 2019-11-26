@@ -14,7 +14,7 @@ setuptools.setup(
   long_description=long_description,
   requires=['wheel'],
   author='KK Santhanam',
-  setup_requires=['wheel'],
+  setup_requires=['setuptools','wheel'],
   author_email='KK.Santhanam@gmail.com',
   url='https://github.com/KSanthanam/RaspberryPiMovementDetector',
   download_url='https://github.com/KSanthanam/RaspberryPiMovementDetector/archive/v_01.tar.gz',
