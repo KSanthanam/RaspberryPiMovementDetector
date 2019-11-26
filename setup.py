@@ -1,6 +1,7 @@
-from distutils.core import setup
+import setuptools
+# from distutils.core import setup
 
-setup(
+setuptools.setup(
   name='RaaspberryPiMovementDetector',
   packages=['RaaspberryPiMovementDetector'],
   version='0.1',
