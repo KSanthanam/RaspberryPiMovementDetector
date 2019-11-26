@@ -38,4 +38,4 @@ jobs:
       uses: pypa/gh-action-pypi-publish@master
       with:
         user: __token__
-        password: ${{ secrets.pypi-password }}
+        password: pypi-AgEIcHlwaS5vcmcCJDEyMWE4Zjk5LTBiNzEtNDJkYy04MDViLTQ2ZDcwMmUxZjhmYwACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgXPPrF4zS5lKcPjMvApEBLRnwISKQWCQOSgfObeYGII8
