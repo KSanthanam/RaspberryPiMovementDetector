@@ -12,6 +12,7 @@ setuptools.setup(
   version='0.3',
   description='Raspberry Movement Detector',
   long_description=long_description,
+  requires=['wheel']
   author='KK Santhanam',
   setup_requires=['wheel'],
   author_email='KK.Santhanam@gmail.com',
