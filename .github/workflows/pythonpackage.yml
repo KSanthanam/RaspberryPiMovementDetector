@@ -1,6 +1,6 @@
-name: Python package
+name: Publish RaspberryPiMovementDetector
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
@@ -41,7 +41,7 @@ jobs:
         python setup.py bdist_wheel
     - name: Publish a Python distribution to PyPI
       # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-      if: matrix.python-version == '3.7'
+      if: matrix.python-version == '3.7' && github.event_name == 'push' 
       uses: pypa/gh-action-pypi-publish@master
       with:
         user: __token__
