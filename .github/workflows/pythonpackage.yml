@@ -34,7 +34,8 @@ jobs:
         pytest
     - name: Run Distribution
       run: |
-        pip install setuptools wheel
+        pip install setuptools
+        pip install wheel
         python setup.py sdist
         python setup.py bdist_wheel
     - name: Publish a Python distribution to PyPI
