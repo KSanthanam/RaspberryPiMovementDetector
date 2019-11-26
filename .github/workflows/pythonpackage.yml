@@ -34,7 +34,8 @@ jobs:
         pytest
     - name: Run Distribution
       run: |
-        python -m pip install --user --upgrade setuptools wheel
+        python install setuptools wheel
+        python setup.py sdist
     - name: Publish a Python distribution to PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
