@@ -12,11 +12,11 @@ class Watch:
     return self._echo
 
   def get_distance(self):
-    print "Distance Measurement In Progress"
+    print("Distance Measurement In Progress")
     GPIO.setup(self._trig, GPIO.OUT)
     GPIO.setup(self._echo, GPIO.IN)
     GPIO.output(self._trig, False)
-    print "Waiting For Sensor To Settle"
+    print("Waiting For Sensor To Settle")
     time.sleep(2)
 
     GPIO.output(self._trig, True)
@@ -34,7 +34,7 @@ class Watch:
     distance = pulse_duration * 17150
     distance = round(distance, 2)
 
-    print "Distance:",distance,"cm"
+    print("Distance:",distance,"cm")
 
     GPIO.cleanup()
     
