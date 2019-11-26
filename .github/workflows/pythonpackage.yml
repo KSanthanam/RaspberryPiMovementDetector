@@ -34,6 +34,7 @@ jobs:
         pytest
     - name: Run Distribution
       run: |
+        pip install --upgrade pip
         pip install setuptools
         pip install wheel
         python setup.py sdist
