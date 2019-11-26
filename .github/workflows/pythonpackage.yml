@@ -32,12 +32,12 @@ jobs:
       run: |
         pip install pytest
         pytest
-    # - name: Run Distribution
-    #   run: |
-    #     rm -rf dist
-    #     pip install setuptools wheel
-    #     python setup.py sdist
-    #     python setup.py bdist_wheel
+    - name: Run Distribution
+      run: |
+        rm -rf dist
+        pip install setuptools wheel
+        python setup.py sdist
+        python setup.py bdist_wheel
     - name: Publish a Python distribution to PyPI
       # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@master
