@@ -37,7 +37,7 @@ jobs:
         pip install --upgrade pip
         pip install setuptools wheel
         python setup.py sdist
-        python setup.py bdist_wheel
+        # python setup.py bdist_wheel
     - name: Publish a Python distribution to PyPI
       # if: matrix.python-version == '3.7' && github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@master
