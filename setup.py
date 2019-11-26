@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open("README.txt", "r") as fh:
     long_description = fh.read()
@@ -8,7 +8,7 @@ with open("LICENSE", "r") as fh:
 
 setup(
   name='RaspberryPiMovementDetector',
-  packages=['MovementDetector'],
+  packages=find_packages(),
   version='0.1',
   description='Raspberry Movement Detector',
   long_description=long_description,
