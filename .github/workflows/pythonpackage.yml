@@ -34,6 +34,8 @@ jobs:
         pytest
     - name: Publish a Python distribution to PyPI
       uses: pypa/gh-action-pypi-publish@master
+      run: |
+        python -m pip install --user --upgrade setuptools wheel
       with:
         user: __token__
         password: ${{ secrets.PythonSecret }}
