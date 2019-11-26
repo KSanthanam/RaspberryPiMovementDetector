@@ -7,8 +7,8 @@ with open("LICENSE", "r") as fh:
     license = fh.read()
 
 setuptools.setup(
-  name='RaaspberryPiMovementDetector',
-  packages=['RaaspberryPiMovementDetector'],
+  name='RaspberryPiMovementDetector',
+  packages=['RaspberryPiMovementDetector'],
   version='0.3',
   description='Raspberry Movement Detector',
   long_description=long_description,
