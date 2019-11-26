@@ -35,8 +35,7 @@ jobs:
     - name: Run Distribution
       run: |
         pip install --upgrade pip
-        pip install setuptools
-        pip uninstall wheel
+        pip install setuptools wheel
         python setup.py sdist
         python setup.py bdist_wheel
     - name: Publish a Python distribution to PyPI
