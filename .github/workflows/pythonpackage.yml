@@ -10,6 +10,8 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [2.7, 3.5, 3.6, 3.7]
+      secrets:
+        pypi-password: pypi-AgEIcHlwaS5vcmcCJDEyMWE4Zjk5LTBiNzEtNDJkYy04MDViLTQ2ZDcwMmUxZjhmYwACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgXPPrF4zS5lKcPjMvApEBLRnwISKQWCQOSgfObeYGII8
 
     steps:
     - uses: actions/checkout@v1
@@ -36,4 +38,4 @@ jobs:
       uses: pypa/gh-action-pypi-publish@master
       with:
         user: __token__
-        password: ${{ secrets.pypi_password }}
+        password: ${{ secrets.pypi-password }}
