@@ -32,11 +32,11 @@ jobs:
       run: |
         pip install pytest
         pytest
-    # - name: Run Distribution
-    #   run: |
-    #     pip install --upgrade pip
-    #     pip install setuptools wheel
-    #     python setup.py sdist
+    - name: Run Distribution
+      run: |
+        # pip install --upgrade pip
+        pip install setuptools wheel
+        python setup.py sdist
     #     python setup.py bdist_wheel
     - name: Publish a Python distribution to PyPI
       # if: matrix.python-version == '3.7' && github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
