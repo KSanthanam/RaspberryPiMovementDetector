@@ -12,7 +12,6 @@ setuptools.setup(
   version='0.3',
   description='Raspberry Movement Detector',
   long_description=long_description,
-  long_description_content_type="text/markdown",
   author='KK Santhanam',
   author_email='KK.Santhanam@gmail.com',
   url='https://github.com/KSanthanam/RaspberryPiMovementDetector',
@@ -25,6 +24,7 @@ setuptools.setup(
   license=license,
   keywords=['RaspberryPi', 'RaspberryPi IoT']
 )
+  # long_description_content_type="text/markdown",
   # setup_requires=['wheel']
   # install_requires=[
   #   'numpy',
