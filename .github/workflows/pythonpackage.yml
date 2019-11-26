@@ -32,10 +32,11 @@ jobs:
       run: |
         pip install pytest
         pytest
-    - name: Publish a Python distribution to PyPI
-      uses: pypa/gh-action-pypi-publish@master
+    - name: Run Distribution
       run: |
         python -m pip install --user --upgrade setuptools wheel
+    - name: Publish a Python distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@master
       with:
         user: __token__
         password: ${{ secrets.PythonSecret }}
