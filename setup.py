@@ -4,7 +4,7 @@ import setuptools
 setuptools.setup(
   name='RaaspberryPiMovementDetector',
   packages=['RaaspberryPiMovementDetector'],
-  version='0.1',
+  version='0.2',
   license='MIT',
   description='Raspberry Movement Detector',
   author='KK Santhanam',
