@@ -1,4 +1,4 @@
-import setuptools
+from setuptools import setup
 
 with open("README.txt", "r") as fh:
     long_description = fh.read()
@@ -6,13 +6,15 @@ with open("README.txt", "r") as fh:
 with open("LICENSE", "r") as fh:
     license = fh.read()
 
-setuptools.setup(
+setup(
   name='RaspberryPiMovementDetector',
   packages=['RaspberryPiMovementDetector'],
   version='0.4',
   description='Raspberry Movement Detector',
   long_description=long_description,
-  requires=['wheel'],
+  requires=[
+    'setuptools>=42.0.1',
+    'wheel>=0.33.6'],
   author='KK Santhanam',
   setup_requires=['setuptools','wheel'],
   author_email='KK.Santhanam@gmail.com',
