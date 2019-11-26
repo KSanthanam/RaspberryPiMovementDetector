@@ -13,6 +13,7 @@ setuptools.setup(
   description='Raspberry Movement Detector',
   long_description=long_description,
   author='KK Santhanam',
+  setup_requires=['wheel'],
   author_email='KK.Santhanam@gmail.com',
   url='https://github.com/KSanthanam/RaspberryPiMovementDetector',
   download_url='https://github.com/KSanthanam/RaspberryPiMovementDetector/archive/v_01.tar.gz',
