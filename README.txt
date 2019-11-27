@@ -4,7 +4,7 @@ Pass pins Trigger and Echo. Pass offset to determine boundary for the object to 
 
 Example
 from pymitter import EventEmitter
-<pre>
+
 ee = EventEmitter()
 
 # decorator usage
@@ -24,4 +24,4 @@ ee.emit("myevent", "foo")
 ee.emit("myotherevent", "bar")
 # -> "handler2 called with bar"
 Source code and more info at https://github.com/riga/pymitter.
-</pre>
+
