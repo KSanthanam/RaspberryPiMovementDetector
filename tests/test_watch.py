@@ -4,7 +4,7 @@ try:
     import RPi.GPIO as GPIO
     import smbus
     SIMULATION = False
-except ImportError:
+except:
     from rpi_hardware.mocked import GPIO
     from rpi_hardware.mocked import smbus
     SIMULATION = True
