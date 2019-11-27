@@ -1,6 +1,7 @@
 import time
 # create an EventEmitter instance
 from pymitter import EventEmitter
+from concurrent.futures import ThreadPoolExecutor
 
 
 class Watch:
@@ -13,6 +14,9 @@ class Watch:
     self._echo = echo
     self._offset = offset
     self._wasIn = False
+    self._observer = ThreadPoolExecutor(max_workers=1)
+    self._observer_on = True
+    self._future = None
 
   def trigger_pin(self):
     return self._trig
@@ -20,7 +24,7 @@ class Watch:
   def echo_pin(self):
     return self._echo
 
-  def observe(self):
+  def ping(self):
     distance = self.get_distance()
     if distance < self._offset:
       if not self._wasIn:
@@ -30,6 +34,27 @@ class Watch:
       if self._wasIn:
         self._ee.emit("ObjectOut", distance)
         self._wasIn = False
+    return
+
+  def poll(self):
+    while True:
+      if self._observer_on:
+        self.ping()
+      else:
+        return
+
+  def observe(self):
+    self._future = self._observer.submit(self.poll)
+    return
+
+  def stop(self):
+    self._observer_on = False
+    time.sleep(3)
+    try:
+      self._future.shutdown(wait=False)
+    except:
+      if self._future.running():
+        self._observer.shutdown(wait=False)
     return
 
   def get_distance(self):

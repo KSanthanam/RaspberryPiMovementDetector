@@ -1,6 +1,7 @@
 import pytest
 import sys
 import fake_rpi
+import time
 
 sys.modules['RPi'] = fake_rpi.RPi
 
@@ -36,4 +37,6 @@ class TestWatch():
     def test_observe(self, trig, echo, func_in, func_out, offset):
         watch = Watch(GPIO, trig, echo, func_in, func_out, offset)
         watch.observe()
+        time.sleep(10)
+        watch.stop()
         assert stack[-1].startswith("func_in_usage_") or stack[-1].startswith("func_out_usage_")

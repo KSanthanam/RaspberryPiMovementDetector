@@ -3,4 +3,6 @@ scrapeasy
 wheel
 RPi.GPIO
 fake-rpi
+time
 pymitter
+multiprocess
