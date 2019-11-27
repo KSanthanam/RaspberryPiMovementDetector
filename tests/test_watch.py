@@ -40,3 +40,8 @@ class TestWatch():
         time.sleep(10)
         watch.stop()
         assert stack[-1].startswith("func_in_usage_") or stack[-1].startswith("func_out_usage_")
+
+    def test_ping(self, trig, echo, func_in, func_out, offset):
+        watch = Watch(GPIO, trig, echo, func_in, func_out, offset)
+        watch.ping()
+        assert stack[-1].startswith("func_in_usage_") or stack[-1].startswith("func_out_usage_")
