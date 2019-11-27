@@ -2,7 +2,7 @@ import pytest
 import sys
 import fake_rpi
 
-sys.modules['RPi'] = fake_rpi.RPi     # Fake RPi (GPIO)
+sys.modules['RPi'] = fake_rpi.RPi
 
 try:
     from RPi.GPIO import GPIO
@@ -11,14 +11,15 @@ except:
     GPIO = RPi.GPIO
 
 from MovementDetector.Watch import Watch
+stack = []
 
-def object_in_func(arg):
-    print("object_in_func called with", arg)
+def func_moved_in(arg):
+    stack.append("func_in_usage_" + str(arg))
 
-def object_out_func(arg):
-    print("object_out_func called with", arg)
+def func_moved_out(arg):
+    stack.append("func_out_usage_" + str(arg))
 
-@pytest.mark.parametrize('trig, echo, func_in, func_out', [(23, 24, object_in_func, object_out_func), (3, 4, object_in_func, object_out_func)])     
+@pytest.mark.parametrize('trig, echo, func_in, func_out', [(23, 24, func_moved_in, func_moved_in), (3, 4, func_moved_in, func_moved_out)])     
 class TestWatch():
     def test_trig(self, trig, echo, func_in, func_out):
         watch = Watch(GPIO, trig, echo, func_in, func_out)
@@ -35,3 +36,4 @@ class TestWatch():
     def test_observe(self, trig, echo, func_in, func_out):
         watch = Watch(GPIO, trig, echo, func_in, func_out)
         watch.observe()
+        assert stack[-1].startswith("func_in_usage_")
