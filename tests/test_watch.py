@@ -1,14 +1,18 @@
 import pytest
+import sys
+import fake_rpi
 
-try:
-    import RPi.GPIO as GPIO
-    import smbus
-    SIMULATION = False
-except:
-    from rpi_hardware.mocked import GPIO
-    from rpi_hardware.mocked import smbus
-    SIMULATION = True
+sys.modules['RPi'] = fake_rpi.RPi     # Fake RPi (GPIO)
+# sys.modules['smbus'] = fake_rpi.smbus # Fake smbus (I2C)
 
+# try:
+#     import RPi.GPIO as GPIO
+#     SIMULATION = False
+# except:
+#     from rpi_hardware.mocked import GPIO
+#     SIMULATION = True
+
+from RPi.GPIO import GPIO
 
 from MovementDetector.Watch import Watch
 
