@@ -1,7 +1,11 @@
-import RPi.GPIO as GPIO
+# import sys
+# print(sys.modules['RPi'])
+# import RPi.GPIO as GPIO
 import time
+
 class Watch:
-  def __init__(self, trig, echo):
+  def __init__(self, gpio, trig, echo):
+    self._gpio
     self._trig = trig
     self._echo = echo
   
@@ -13,20 +17,20 @@ class Watch:
 
   def get_distance(self):
     print("Distance Measurement In Progress")
-    GPIO.setup(self._trig, GPIO.OUT)
-    GPIO.setup(self._echo, GPIO.IN)
-    GPIO.output(self._trig, False)
+    self._gpio.setup(self._trig, GPIO.OUT)
+    self._gpio.setup(self._echo, GPIO.IN)
+    self._gpio.output(self._trig, False)
     print("Waiting For Sensor To Settle")
     time.sleep(2)
 
-    GPIO.output(self._trig, True)
+    self._gpio.output(self._trig, True)
     time.sleep(0.00001)
-    GPIO.output(self._trig, False)
+    self._gpio.output(self._trig, False)
 
-    while GPIO.input(self._echo)==0:
+    while self._gpio.input(self._echo)==0:
       pulse_start = time.time()
 
-    while GPIO.input(self._echo)==1:
+    while self._gpio.input(self._echo)==1:
       pulse_end = time.time()
 
     pulse_duration = pulse_end - pulse_start
@@ -36,5 +40,5 @@ class Watch:
 
     print("Distance:",distance,"cm")
 
-    GPIO.cleanup()
+    self._gpio.cleanup()
     
