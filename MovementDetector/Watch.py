@@ -17,8 +17,8 @@ class Watch:
 
   def get_distance(self):
     print("Distance Measurement In Progress")
-    self._gpio.setup(self._trig, GPIO.OUT)
-    self._gpio.setup(self._echo, GPIO.IN)
+    self._gpio.setup(self._trig, self.gpio.OUT)
+    self._gpio.setup(self._echo, self.gpio.IN)
     self._gpio.output(self._trig, False)
     print("Waiting For Sensor To Settle")
     time.sleep(2)
