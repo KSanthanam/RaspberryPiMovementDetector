@@ -1,2 +1,27 @@
-# RaspberryPiMovementDetector
-MovementDetector detects movement of objects in proximity. It signals On when then object enters and Off when it exits
+Project description
+Movement detector for RaspberryPi with Watch to watch objects coming into proximity.
+Pass pins Trigger and Echo. Pass offset to determine boundary for the object to come in
+
+Example
+from pymitter import EventEmitter
+<pre>
+ee = EventEmitter()
+
+# decorator usage
+@ee.on("myevent")
+def handler1(arg):
+    print "handler1 called with", arg
+
+# callback usage
+def handler2(arg):
+    print "handler2 called with", arg
+ee.on("myotherevent", handler2)
+
+# emit
+ee.emit("myevent", "foo")
+# -> "handler1 called with foo"
+
+ee.emit("myotherevent", "bar")
+# -> "handler2 called with bar"
+Source code and more info at https://github.com/riga/pymitter.
+</pre>
