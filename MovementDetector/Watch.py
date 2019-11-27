@@ -17,9 +17,13 @@ class Watch(object):
             - *func_out*: handler when a objects goes out of field
             - *offset*: offset in cm to determine if the object is IN zone or OUT zone
             """
+    def dummy_func_in():
+      print("Dummy in function")
+    def dummy_func_out():
+      print("Dummy out function")
     super(Watch, self).__init__()
-    func_in = kwargs.get("func_in", lambda arg: print("Running func_in with arg"))
-    func_out = kwargs.get("func_out", lambda arg: print("Running func_out with arg"))
+    func_in = kwargs.get("func_in", dummy_func_in)
+    func_out = kwargs.get("func_out", dummy_func_out)
     self._ee = EventEmitter(wildcard=True, new_listener=True, max_listeners=-1)    
     self._ee.on("ObjectIn", func_in)
     self._ee.on("ObjectOut", func_out)
