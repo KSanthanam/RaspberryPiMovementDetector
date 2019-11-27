@@ -28,5 +28,5 @@ time.sleep(100) # Sleep
 watch.stop()
 </pre>
 
-Source code and more info athttps://github.com/KSanthanam/RaspberryPiMovementDetector.
+Source code and more info at https://github.com/KSanthanam/RaspberryPiMovementDetector.
 
