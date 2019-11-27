@@ -1,11 +1,8 @@
-# import sys
-# print(sys.modules['RPi'])
-# import RPi.GPIO as GPIO
 import time
 
 class Watch:
   def __init__(self, gpio, trig, echo):
-    self._gpio
+    self._gpio = gpio
     self._trig = trig
     self._echo = echo
   
