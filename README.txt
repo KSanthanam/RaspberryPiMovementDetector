@@ -3,27 +3,30 @@ Movement detector for RaspberryPi with Watch to watch objects coming into proxim
 Pass pins Trigger and Echo. Pass offset to determine boundary for the object to come in
 
 Example
-from pymitter import EventEmitter
+
 <pre>
-ee = EventEmitter()
+from RPi.GPIO import GPIO
+from MovementDetector.Watch import Watch
 
-# decorator usage
-@ee.on("myevent")
-def handler1(arg):
-    print "handler1 called with", arg
+TRIG = 23
+ECHO = 24
 
-# callback usage
-def handler2(arg):
-    print "handler2 called with", arg
-ee.on("myotherevent", handler2)
+def func_moved_in(arg):
+  print("process for object entering field")
 
-# emit
-ee.emit("myevent", "foo")
-# -> "handler1 called with foo"
+def func_moved_out(arg):
+  print("process for object exiting field")
 
-ee.emit("myotherevent", "bar")
-# -> "handler2 called with bar"
+OFFSET = 200 # 2m
+
+watch = Watch(GPIO=GPIO, trig=TRIG, echo=ECHO, func_in=func_moved_in, func_out=func_moved_out, offset=OFFSET)
+
+watch.observe()
+
+time.sleep(100) # Sleep 
+
+watch.stop()
 </pre>
 
-Source code and more info at https://github.com/riga/pymitter.
+Source code and more info athttps://github.com/KSanthanam/RaspberryPiMovementDetector.
 
