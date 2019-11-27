@@ -5,6 +5,7 @@ Pass pins Trigger and Echo. Pass offset to determine boundary for the object to 
 Example
 
 <pre>
+import time
 from RPi.GPIO import GPIO
 from MovementDetector.Watch import Watch
 

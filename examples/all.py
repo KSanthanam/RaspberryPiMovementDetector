@@ -37,7 +37,7 @@ watch = Watch(gpio=GPIO, trig=TRIG, echo=ECHO, func_in=func_moved_in, func_out=f
 
 watch.observe()
 
-time.sleep(100) # Sleep 
+time.sleep(10) # Sleep 
 
 watch.stop()
 

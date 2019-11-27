@@ -24,6 +24,7 @@ pip install RaspberryPiMovementDetector
 #### Basic usage
 
 ```python
+import time
 from RPi.GPIO import GPIO
 from MovementDetector.Watch import Watch
 
