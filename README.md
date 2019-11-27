@@ -38,7 +38,7 @@ def func_moved_out(arg):
 
 OFFSET = 200 # 2m
 
-watch = Watch(GPIO=GPIO, trig=TRIG, echo=ECHO, func_in=func_moved_in, func_out=func_moved_out, offset=OFFSET)
+watch = Watch(gpio=GPIO, trig=TRIG, echo=ECHO, func_in=func_moved_in, func_out=func_moved_out, offset=OFFSET)
 
 watch.observe()
 

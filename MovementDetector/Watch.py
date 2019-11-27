@@ -4,15 +4,29 @@ from pymitter import EventEmitter
 from concurrent.futures import ThreadPoolExecutor
 
 
-class Watch:
-  def __init__(self, gpio, trig, echo, func_in, func_out, offset):
-    self._ee = EventEmitter(wildcard=True, new_listener=True, max_listeners=-1)
+class Watch(object):
+  # def __init__(self, gpio, trig, echo, func_in, func_out, offset):
+  def __init__(self, **kwargs):    
+    """ Watch(gpio=GPIO, trig=23, echo=24, func_in=None, func_out=None, offset=200)
+            The Watch class.
+            Please always use *kwargs* in the constructor.
+            - *gpio*: Pass the GPIO object
+            - *trig*: Pin for trigger
+            - *echo*: Pin for trigger
+            - *func_in*: handler when a objects comes into field
+            - *func_out*: handler when a objects goes out of field
+            - *offset*: offset in cm to determine if the object is IN zone or OUT zone
+            """
+    super(Watch, self).__init__()
+    func_in = kwargs.get("func_in", lambda arg: print("Running func_in with arg"))
+    func_out = kwargs.get("func_out", lambda arg: print("Running func_out with arg"))
+    self._ee = EventEmitter(wildcard=True, new_listener=True, max_listeners=-1)    
     self._ee.on("ObjectIn", func_in)
     self._ee.on("ObjectOut", func_out)
-    self._gpio = gpio
-    self._trig = trig
-    self._echo = echo
-    self._offset = offset
+    self._gpio = kwargs.get("gpio",None)
+    self._trig = kwargs.get("trig",23)
+    self._echo = kwargs.get("echo",24)
+    self._offset = kwargs.get("offset",200)
     self._wasIn = False
     self._observer = ThreadPoolExecutor(max_workers=1)
     self._observer_on = True
