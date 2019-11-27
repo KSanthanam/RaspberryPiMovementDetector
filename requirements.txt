@@ -4,4 +4,4 @@ wheel
 RPi.GPIO
 fake-rpi
 pymitter
-multiprocess
+futures
