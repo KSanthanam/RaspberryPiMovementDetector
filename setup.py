@@ -13,6 +13,7 @@ setup(
   version='0.12',
   description='Raspberry Movement Detector',
   long_description=long_description,
+  long_description_content_type='text/markdown',  
   requires=['wheel'],
   author='KK Santhanam',
   setup_requires=['setuptools','wheel'],
