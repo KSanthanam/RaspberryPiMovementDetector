@@ -41,7 +41,7 @@ jobs:
       run: |
         rm -rf dist
         pip install setuptools 
-        pip install fake_rpi rpi_hardware 
+        pip install rpi_hardware 
         pip wheel -w dist .
         python setup.py sdist
         python setup.py bdist_wheel
