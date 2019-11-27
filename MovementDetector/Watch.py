@@ -4,13 +4,15 @@ from pymitter import EventEmitter
 
 
 class Watch:
-  def __init__(self, gpio, trig, echo, func_in, func_out):
+  def __init__(self, gpio, trig, echo, func_in, func_out, offset):
     self._ee = EventEmitter(wildcard=True, new_listener=True, max_listeners=-1)
     self._ee.on("ObjectIn", func_in)
     self._ee.on("ObjectOut", func_out)
     self._gpio = gpio
     self._trig = trig
     self._echo = echo
+    self._offset = offset
+    self._wasIn = False
 
   def trigger_pin(self):
     return self._trig
@@ -19,9 +21,16 @@ class Watch:
     return self._echo
 
   def observe(self):
-    # emit
-    distance = self.get_distance()    
-    self._ee.emit("ObjectIn", distance)
+    distance = self.get_distance()
+    if distance < self._offset:
+      if not self._wasIn:
+        self._ee.emit("ObjectIn", distance)
+        self._wasIn = True
+    else:
+      if self._wasIn:
+        self._ee.emit("ObjectOut", distance)
+        self._wasIn = False
+    return
 
   def get_distance(self):
     print("Distance Measurement In Progress")

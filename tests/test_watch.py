@@ -19,21 +19,21 @@ def func_moved_in(arg):
 def func_moved_out(arg):
     stack.append("func_out_usage_" + str(arg))
 
-@pytest.mark.parametrize('trig, echo, func_in, func_out', [(23, 24, func_moved_in, func_moved_in), (3, 4, func_moved_in, func_moved_out)])     
+@pytest.mark.parametrize('trig, echo, offset, func_in, func_out', [(23, 24, 10, func_moved_in, func_moved_in), (3, 4, 1, func_moved_in, func_moved_out)])     
 class TestWatch():
-    def test_trig(self, trig, echo, func_in, func_out):
-        watch = Watch(GPIO, trig, echo, func_in, func_out)
+    def test_trig(self, trig, echo, func_in, func_out, offset):
+        watch = Watch(GPIO, trig, echo, func_in, func_out, offset)
         assert watch.trigger_pin() == trig
         
-    def test_echo(self, trig, echo, func_in, func_out):
-        watch = Watch(GPIO, trig, echo, func_in, func_out)
+    def test_echo(self, trig, echo, func_in, func_out, offset):
+        watch = Watch(GPIO, trig, echo, func_in, func_out, offset)
         assert watch.echo_pin() == echo
 
-    def test_distance(self, trig, echo, func_in, func_out):
-        watch = Watch(GPIO, trig, echo, func_in, func_out)
+    def test_distance(self, trig, echo, func_in, func_out, offset):
+        watch = Watch(GPIO, trig, echo, func_in, func_out, offset)
         assert type(watch.get_distance()) is float
 
-    def test_observe(self, trig, echo, func_in, func_out):
-        watch = Watch(GPIO, trig, echo, func_in, func_out)
+    def test_observe(self, trig, echo, func_in, func_out, offset):
+        watch = Watch(GPIO, trig, echo, func_in, func_out, offset)
         watch.observe()
-        assert stack[-1].startswith("func_in_usage_")
+        assert stack[-1].startswith("func_in_usage_") or stack[-1].startswith("func_out_usage_")
