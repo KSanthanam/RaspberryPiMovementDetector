@@ -1,16 +1,27 @@
 import time
+# create an EventEmitter instance
+from pymitter import EventEmitter
+
 
 class Watch:
-  def __init__(self, gpio, trig, echo):
+  def __init__(self, gpio, trig, echo, func_in, func_out):
+    self._ee = EventEmitter(wildcard=True, new_listener=True, max_listeners=-1)
+    self._ee.on("ObjectIn", func_in)
+    self._ee.on("ObjectOut", func_out)
     self._gpio = gpio
     self._trig = trig
     self._echo = echo
-  
+
   def trigger_pin(self):
     return self._trig
 
   def echo_pin(self):
     return self._echo
+
+  def observe(self):
+    # emit
+    distance = self.get_distance()    
+    self._ee.emit("ObjectIn", distance)
 
   def get_distance(self):
     print("Distance Measurement In Progress")

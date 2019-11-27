@@ -2,3 +2,5 @@ numpy
 scrapeasy
 wheel
 RPi.GPIO
+fake-rpi
+pymitter
