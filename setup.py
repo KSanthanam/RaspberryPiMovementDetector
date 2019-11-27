@@ -10,7 +10,7 @@ with open("LICENSE", "r") as fh:
 setup(
   name='RaspberryPiMovementDetector',
   packages=find_packages(),
-  version='0.14',
+  version='0.15',
   description='Raspberry Movement Detector',
   long_description=long_description,
   long_description_content_type='text/markdown',  
