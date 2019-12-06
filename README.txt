@@ -6,7 +6,7 @@ Example
 
 <pre>
 import time
-from RPi.GPIO import GPIO
+import RPi.GPIO as GPIO
 from MovementDetector.Watch import Watch
 
 TRIG = 23
