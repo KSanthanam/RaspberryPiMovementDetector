@@ -12,8 +12,6 @@ setup(
   packages=find_packages(),
   version='0.17.2',
   description='Raspberry Movement Detector',
-  long_description=long_description,
-  long_description_content_type='text/markdown',  
   requires=['wheel'],
   author='KK Santhanam',
   setup_requires=['setuptools','wheel'],
@@ -28,6 +26,7 @@ setup(
   license='MIT',
   keywords=['RaspberryPi', 'RaspberryPi IoT']
 )
+  # long_description=long_description,
   # long_description_content_type="text/markdown",
   # setup_requires=['wheel']
   # install_requires=[
